@@ -1,0 +1,46 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'19'
+-sourcepath
+'/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/src/main/java:/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2024 <a href="https://leibnix.com/">leibnix</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'binarytree 0.0.4 API'
+-use
+-version
+-windowtitle
+'binarytree 0.0.4 API'
+com.leibnix
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/src/main/java = 1734999989934
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/generated-sources/annotations = 1735148646591
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/tag-search-index.js = 1735148833540
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/overview-tree.html = 1735148833512
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/module-search-index.js = 1735148833538
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/index.html = 1735148833558
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/package-search-index.js = 1735148833538
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/jquery-ui.overrides.css = 1735148833575
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/index-all.html = 1735148833555
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/allpackages-index.html = 1735148833537
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/member-search-index.js = 1735148833539
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/copy.svg = 1735148833565
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/script.js = 1735148833565
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/stylesheet.css = 1735148833564
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/search-page.js = 1735148833570
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/help-doc.html = 1735148833561
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/element-list = 1735148833480
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/search.html = 1735148833557
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/allclasses-index.html = 1735148833534
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/type-search-index.js = 1735148833539
+/Users/axelarrondo/com.leibnix/BinaryTree/binarytree/target/apidocs/search.js = 1735148833568
