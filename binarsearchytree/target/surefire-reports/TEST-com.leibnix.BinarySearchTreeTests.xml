@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leibnix.BinarySearchTreeTests" time="0.074" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.leibnix.BinarySearchTreeTests" time="0.044" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AR"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/temurin-19.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire/surefirebooter2381613421023191596.jar /Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire 2024-12-25T16-20-24_923-jvmRun1 surefire4152799761147620223tmp surefire_05126070325431582690tmp"/>
+    <property name="sun.java.command" value="/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire/surefirebooter10632427581482034102.jar /Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire 2024-12-25T16-22-52_540-jvmRun1 surefire12926330463150387249tmp surefire_08833539553024706600tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/test-classes:/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/classes:/Users/axelarrondo/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/axelarrondo/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire/surefirebooter2381613421023191596.jar"/>
+    <property name="surefire.real.class.path" value="/Users/axelarrondo/com.leibnix/BinarySearchTree/binarsearchytree/target/surefire/surefirebooter10632427581482034102.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="19.0.1+10"/>
@@ -58,6 +58,6 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testCheckHeight" classname="com.leibnix.BinarySearchTreeTests" time="0.005"/>
-  <testcase name="testCheckHeightWithIntegers" classname="com.leibnix.BinarySearchTreeTests" time="0"/>
+  <testcase name="testCheckHeight" classname="com.leibnix.BinarySearchTreeTests" time="0.006"/>
+  <testcase name="testCheckHeightWithIntegers" classname="com.leibnix.BinarySearchTreeTests" time="0.002"/>
 </testsuite>
