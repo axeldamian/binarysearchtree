@@ -6,15 +6,15 @@
 
   <groupId>com.leibnix</groupId>
   <artifactId>binarysearchtree</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.1</version>
 
   <name>binarytree</name>
-  <url>https://leibnix.com/binary-tree/</url>
+  <url>https://leibnix.com/binary-search-tree/</url>
 
    <packaging>jar</packaging>
 
   <description>
-This is an implementation of an binary tree.
+This is an implementation of an binary search tree.
   </description>
 
   <organization>
