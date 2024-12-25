@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Test class that uses the JUnit 4 framework.
  */
-public class BinaryTreeTests {
+public class BinarySearchTreeTests {
 
   /**
    * Test to verify that BinaryTree Heighth is correct.
@@ -16,7 +16,7 @@ public class BinaryTreeTests {
   public void testCheckHeight() {
 
     // Creating an instance of the BinaryTree String class
-    BinaryTree<String> b = new BinaryTree<String>();
+    BinarySearchTree<String> b = new BinarySearchTree<String>();
 
     // Input parameters
     String param1 = "a";
@@ -40,7 +40,7 @@ public class BinaryTreeTests {
   public void testCheckHeightWithIntegers() {
 
     // Creating an instance of the BinaryTree int class
-    BinaryTree<Integer> b = new BinaryTree<Integer>();
+    BinarySearchTree<Integer> b = new BinarySearchTree<Integer>();
 
     // Input parameters
     Integer param1 = 1;

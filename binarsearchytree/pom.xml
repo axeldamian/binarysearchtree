@@ -134,7 +134,7 @@ This is an implementation of an binary search tree.
                         <addClasspath>true</addClasspath>
                     </manifest>
                     <manifestEntries>
-                        <Main-Class>com.leibnix.BinaryTree</Main-Class>
+                        <Main-Class>com.leibnix.BinarySearchTree</Main-Class>
                     </manifestEntries>
                 </archive>
             </configuration>

@@ -5,16 +5,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.leibnix</groupId>
-  <artifactId>binarytree</artifactId>
-  <version>0.0.4</version>
+  <artifactId>binarysearchtree</artifactId>
+  <version>0.0.1</version>
 
   <name>binarytree</name>
-  <url>https://leibnix.com/binary-tree/</url>
+  <url>https://leibnix.com/binary-search-tree/</url>
 
    <packaging>jar</packaging>
 
   <description>
-This is an implementation of an binary tree.
+This is an implementation of an binary search tree.
   </description>
 
   <organization>
@@ -134,7 +134,7 @@ This is an implementation of an binary tree.
                         <addClasspath>true</addClasspath>
                     </manifest>
                     <manifestEntries>
-                        <Main-Class>com.leibnix.BinaryTree</Main-Class>
+                        <Main-Class>com.leibnix.BinarySearchTree</Main-Class>
                     </manifestEntries>
                 </archive>
             </configuration>
