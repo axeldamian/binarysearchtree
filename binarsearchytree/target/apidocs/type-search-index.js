@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.leibnix","l":"BinaryTree"},{"p":"com.leibnix","l":"Tree"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.leibnix","l":"BinarySearchTree"},{"p":"com.leibnix","l":"BST"}];updateSearchResults();

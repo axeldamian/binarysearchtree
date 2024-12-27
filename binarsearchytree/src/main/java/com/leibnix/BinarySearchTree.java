@@ -1,5 +1,6 @@
 package com.leibnix;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,9 +25,13 @@ public class BinarySearchTree<T> implements BST<T> {
         public Node(T value) {
             this.value = value;
         }
+
+        private boolean isInstanceOf(Class<T> clazz) {
+            return clazz.isInstance(this);
+        }
     
         public T getValue() {
-            return value;
+            return (T) value;
         }
     
         public void setValue(T value) {
@@ -199,15 +204,15 @@ public class BinarySearchTree<T> implements BST<T> {
      * a list with root, left, rigth.
      */
     @Override
-    public ArrayList< Node<T> > preorder() {
-        ArrayList< Node<T> > list = new ArrayList< Node<T> >();
+    public ArrayList< T > preorder() {
+        ArrayList<T> list = new ArrayList<T>();
         preorder(root, list);
         return list;
     }
 
-    private void preorder(Node<T> node, ArrayList< Node<T> > list) {
+    private void preorder(Node<T> node, ArrayList< T > list) {
         if (node != null) {
-            list.add(node);
+            list.add(node.value);
             preorder(node.getLeftNode(), list);
             preorder(node.getRightNode(), list);
         }
@@ -217,16 +222,16 @@ public class BinarySearchTree<T> implements BST<T> {
      * a list with left, root, rigth.
      */
     @Override
-    public ArrayList< Node<T> > inorder() {
-        ArrayList< Node<T> > list = new ArrayList< Node<T> >();
+    public ArrayList<T> inorder() {
+        ArrayList<T> list = new ArrayList<T>();
         inorder(root, list);
         return list;
     }
 
-    private void inorder(Node<T> node, ArrayList< Node<T> > list) {
+    private void inorder(Node<T> node, ArrayList<T> list) {
         if (node != null) {
             inorder(node.getLeftNode(), list);
-            list.add(node);
+            list.add(node.value);
             inorder(node.getRightNode(), list);
         }
     }
@@ -235,23 +240,23 @@ public class BinarySearchTree<T> implements BST<T> {
      * a list with left, rigth, root.
      */
     @Override
-    public ArrayList< Node<T> > postorder() {
-        ArrayList< Node<T> > list = new ArrayList< Node<T> >();
+    public ArrayList<T> postorder() {
+        ArrayList<T> list = new ArrayList<T>();
         postorder(root, list);
         return list;
     }
 
-    private void postorder(Node<T> node, ArrayList< Node<T> > list) {
+    private void postorder(Node<T> node, ArrayList<T> list) {
         if (node != null) {
             postorder(node.getLeftNode(), list);
             postorder(node.getRightNode(), list);
-            list.add(node);
+            list.add(node.value);
         }
     }
 
-    //@Override
-    public Node<T> getRoot() {
-        return root;
+    @Override
+    public T getRoot() {
+        return root.value;
     }
 
     @Override
@@ -288,7 +293,7 @@ public class BinarySearchTree<T> implements BST<T> {
     public T[] toArray() {
         ArrayList<T> list = new ArrayList<T>();
         toArray(root, list);
-        return (T[]) list.toArray();
+        return list.toArray((T[]) Array.newInstance(list.get(0).getClass(), list.size()));
     }
 
     private void toArray(Node<T> node, ArrayList<T> list) {
@@ -329,27 +334,232 @@ public class BinarySearchTree<T> implements BST<T> {
 
     @Override
     public boolean isDegenerate() {
-        return isDegenerate(root);
+        return isDegenerate(root.leftNode) && isDegenerate(root.rightNode);
     }
 
     private boolean isDegenerate(Node<T> node) {
         if (node == null) {
             return true;
         } else {
-            return (node.getLeftNode() == null && node.getRightNode() != null) || (node.getLeftNode() != null && node.getRightNode() == null);
+
+            if (node.leftNode != null && node.rightNode != null) {
+                return false;
+            }
+
+            return isDegenerate(node.leftNode) && isDegenerate(node.rightNode);
         }
     }
 
+
     @Override
     public boolean isComplete() {
-        return isComplete(root);
+        
+        if (isEmpty()) {
+            return true;
+        }
+
+        if (isFull()) {
+            return true;
+        }
+
+        int height = getHeight();
+
+        int i = height - 1;
+        int firstLevel = 1;
+        boolean checkThatAllLevelsAreFullExceptTheLastOne = true;
+        while (i >= firstLevel){
+            checkThatAllLevelsAreFullExceptTheLastOne = checkThatAllLevelsAreFullExceptTheLastOne && isLevelFull(i);
+            i = i - 1;
+        }
+
+        return checkThatAllLevelsAreFullExceptTheLastOne && isFilledFromLeft();
+    }
+    
+    public int getHeight(T value) {
+        return getHeight(value, root);
     }
 
-    private boolean isComplete(Node<T> node) {
+    private int getHeight(T value, Node<T> node) {
         if (node == null) {
-            return true;
+            return 0;
+        } else if (value.hashCode() == node.getValue().hashCode()) {
+            return 1;
+        } else if (value.hashCode() < node.getValue().hashCode()) {
+            return 1 + getHeight(value, node.getLeftNode());
         } else {
-            return isComplete(node.getLeftNode()) && isComplete(node.getRightNode()) && height(node.getLeftNode()) == height(node.getRightNode());
+            return 1 + getHeight(value, node.getRightNode());
+        }
+    }
+
+
+    public ArrayList<T> getLeafsInLastLevel() {
+        ArrayList<T> list = new ArrayList<T>();
+        int height = getHeight();
+        getLeafsInLastLevel(root, list, height);
+        return list;
+    }
+
+    private void getLeafsInLastLevel(Node<T> node, ArrayList<T> list, int height) {
+        if (node != null) {
+            if (node.getLeftNode() == null && node.getRightNode() == null && height== getHeight(node.getValue())) {
+                list.add(node.getValue());
+            } else {
+                getLeafsInLastLevel(node.getLeftNode(), list, height);
+                getLeafsInLastLevel(node.getRightNode(), list, height);
+            }
+        }
+    }
+
+    public int getQuantityOfLeafs() {
+        return getQuantityOfLeafs(root);
+    }
+
+    private int getQuantityOfLeafs(Node<T> node) {
+        if (node == null) {
+            return 0;
+        } else if (node.getLeftNode() == null && node.getRightNode() == null) {
+            return 1;
+        } else {
+            return getQuantityOfLeafs(node.getLeftNode()) + getQuantityOfLeafs(node.getRightNode());
+        }
+    }
+
+    public ArrayList<T> getLevel(int level) {
+        ArrayList<T> list = new ArrayList<T>();
+        getLevel(root, list, level, 1);
+        return list;
+    }
+
+    private void getLevel(Node<T> node, ArrayList<T> list, int level, int currentLevel) {
+        if (node != null) {
+            if (currentLevel == level) {
+                list.add(node.getValue());
+            } else {
+                getLevel(node.getLeftNode(), list, level, currentLevel + 1);
+                getLevel(node.getRightNode(), list, level, currentLevel + 1);
+            }
+        }
+    }
+
+    public int getLevel(T value) {
+        return getLevel(value, root);
+    }
+
+    private int getLevel(T value, Node<T> node) {
+        if (node == null) {
+            return 0;
+        } else if (value.hashCode() == node.getValue().hashCode()) {
+            return 1;
+        } else if (value.hashCode() < node.getValue().hashCode()) {
+            return 1 + getLevel(value, node.getLeftNode());
+        } else {
+            return 1 + getLevel(value, node.getRightNode());
+        }
+    }
+
+    public boolean isLevelFull(int level) {
+        if ( level == 0 && this.isEmpty()){
+            return true;
+        }
+        if (level == 0) {
+            return true;
+        }
+        return isLevelFull(root, level, 1);
+    }
+    
+    private boolean isLevelFull(Node node, int level, int currentLevel) {
+    
+        if (currentLevel == level) {
+            return node != null;
+        }
+
+        if (node == null) {
+            return false;
+        }
+    
+        return isLevelFull(node.leftNode, level, currentLevel + 1) &&
+               isLevelFull(node.rightNode, level, currentLevel + 1);
+    }
+
+    public boolean isInstanceOf(Class<T> clazz) {
+        return clazz.isInstance(this);
+    }
+
+    /**
+     * Assuming that levels 1 to height-1 are completely filled.
+     * and the last level is being filled from left to right.
+     */
+    public boolean isFilledFromLeft() {
+        ArrayList<T> list = new ArrayList<T>();
+        int height = getHeight();
+        int penultimateLevel = height - 1;
+        list = getLevel(penultimateLevel);
+        int n = penultimateLevel - 1;
+        int sizeOfNewArray = (int) Math.pow(2, n) * 2;
+        T[] array = (T[]) Array.newInstance( list.get(0).getClass() , sizeOfNewArray );
+        
+        int i = 0;
+        while (i < array.length - 1) {
+
+            T v = list.get(i/2);
+            Node<T> target = getNode(v);
+
+            array[i] = null;
+            array[i+1] = null;
+
+            if (target.leftNode != null ){
+                // TODO: fix what the warning says
+                array[i] = (T) target.leftNode.getValue();
+            }
+            if (target.rightNode != null) {
+                // TODO: fix what the warning says
+                array[i+1] = (T) target.rightNode.getValue();
+            }
+
+            i = i + 2;
+        }
+
+        int h = 0;
+        while (h < array.length - 1 && array[h] != null) {
+            h++;
+        }
+        for (int j = h; j < array.length; j++) {
+            if (array[j] != null) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    public boolean containsAFullSubtree() {
+        return containsAFullSubtree(root);
+    }
+
+    private boolean containsAFullSubtree(Node<T> node) {
+        if (node == null) {
+            return false;
+        } else {
+            return isFull(node) || containsAFullSubtree(node.getLeftNode()) || containsAFullSubtree(node.getRightNode());
+        }
+    }
+
+    /**
+     * Given a value, the node that contains that value is searched for
+     */
+    private Node<T> getNode(T value) {
+        return getNode(value, root);
+    }
+
+    private Node<T> getNode(T value, Node<T> node) {
+        if (node == null) {
+            return null;
+        } else if (value.hashCode() == node.getValue().hashCode()) {
+            return node;
+        } else if (value.hashCode() < node.getValue().hashCode()) {
+            return getNode(value, node.getLeftNode());
+        } else {
+            return getNode(value, node.getRightNode());
         }
     }
     

@@ -15,7 +15,7 @@ public interface BST<T> {
 
     boolean contains(T value);
 
-    void print();
+    void print(); // VER
 
     boolean remove(T value);
 
@@ -35,7 +35,8 @@ public interface BST<T> {
 
     ArrayList postorder();
 
-    //Node<T> getRoot();
+    T getRoot();
+
     HashSet<T> asHashSet();
 
     HashMap<T, Boolean> asHashMap();
@@ -49,4 +50,5 @@ public interface BST<T> {
     boolean isDegenerate();
 
     boolean isComplete();
+
 }
